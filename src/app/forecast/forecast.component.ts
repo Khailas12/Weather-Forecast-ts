@@ -15,8 +15,6 @@ export class ForecastComponent implements OnInit {
   selectedCondition: any;
   forecastData: any[] = [];
   filteredData: any[] = [];
-  weatherDataError = '';
-  weatherConditionsError = '';
 
   constructor(private forecastService: ForecastService) { }
 
@@ -29,9 +27,6 @@ export class ForecastComponent implements OnInit {
     this.forecastService.getConditions().subscribe({
       next: (data) => {
         this.weatherConditions = data?.weatherCondition?.map((condition: any) => condition.condition) || [];
-      },
-      error: () => {
-        this.weatherConditionsError = 'Error fetching weather conditions';
       }
     });
   }
@@ -41,9 +36,6 @@ export class ForecastComponent implements OnInit {
       next: (forecast) => {
         this.forecastData = forecast.data;
         this.filteredData = this.forecastData;
-      },
-      error: () => {
-        this.weatherDataError = 'Error fetching weather data';
       }
     });
   }
