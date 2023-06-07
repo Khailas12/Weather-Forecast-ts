@@ -1,43 +1,49 @@
-<div class="grid">
-  <div class="col-12">
-    <div class="card">
-      <div class="col-6">
-        <h5>{{ title }}</h5>
-      </div>
-      <div>
-        <span class="px-2" *ngFor="let link of navigationLinks">{{ link }}</span>
-      </div>
-    </div>
-
-    <div class="d-flex flex-column ms-5">
-      <h3 class="pt-5">Weather Forecast</h3>
-      <p>This component demonstrates fetching data from the server</p>
-
-      <div class="p-5 flex justify-content-center">
-        <label>Condition: </label>
-        <p-dropdown
-          [options]="weatherConditions"
-          [(ngModel)]="selectedCondition"
-          (onChange)="filterData()"
-          class="custom-dropdown"
-        ></p-dropdown>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="row">
+          <div class="col-6">
+            <h5>{{ title }}</h5>
+          </div>
+          <div class="col">
+            <span class="px-2" *ngFor="let link of navigationLinks">{{ link }}</span>
+          </div>
+        </div>
       </div>
 
-      <p-table [value]="filteredData">
-        <ng-template pTemplate="header">
-          <tr>
-            <th *ngFor="let header of tableHeaders">{{ header }}</th>
-          </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-weatherData>
-          <tr>
-            <td>{{ weatherData.datetime | date: 'MMM d, yyyy, h:mm a' }}</td>
-            <td>{{ convertTemperature(weatherData.temperature, 'C') }}</td>
-            <td>{{ convertTemperature(weatherData.temperature, 'F') }}</td>
-            <td>{{ weatherData.condition }}</td>
-          </tr>
-        </ng-template>
-      </p-table>
+      <div class="d-flex flex-column ms-5">
+        <h3 class="pt-5">Weather Forecast</h3>
+        <p>This component demonstrates fetching data from the server</p>
+
+        <div class="p-5 d-flex align-items-center">
+          <label class="me-2">Condition:</label>
+          <div class="flex-grow-1">
+            <p-dropdown
+              [options]="weatherConditions"
+              [(ngModel)]="selectedCondition"
+              (onChange)="filterData()"
+              class="custom-dropdown"
+            ></p-dropdown>
+          </div>
+        </div>
+        
+        <p-table class="table table-striped" [value]="filteredData">
+          <ng-template pTemplate="header">
+            <tr>
+              <th *ngFor="let header of tableHeaders">{{ header }}</th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-weatherData>
+            <tr>
+              <td>{{ weatherData.datetime | date: 'MMM d, yyyy, h:mm a' }}</td>
+              <td>{{ convertTemperature(weatherData.temperature, 'C') }}</td>
+              <td>{{ convertTemperature(weatherData.temperature, 'F') }}</td>
+              <td>{{ weatherData.condition }}</td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
     </div>
   </div>
 </div>
