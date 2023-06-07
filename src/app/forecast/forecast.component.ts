@@ -25,7 +25,7 @@ export class ForecastComponent implements OnInit {
     this.fetchWeatherData();
   }
 
-  private fetchWeatherConditions() {
+  fetchWeatherConditions() {
     this.forecastService.getConditions().subscribe({
       next: (data) => {
         this.weatherConditions = data?.weatherCondition?.map((condition: any) => condition.condition) || [];
@@ -36,7 +36,7 @@ export class ForecastComponent implements OnInit {
     });
   }
 
-  private fetchWeatherData() {
+  fetchWeatherData() {
     this.forecastService.getConditionData().subscribe({
       next: (forecast) => {
         this.forecastData = forecast.data;
