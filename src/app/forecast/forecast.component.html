@@ -14,10 +14,12 @@
 
       <div class="d-flex flex-column ms-5">
         <h3 class="pt-5">Weather Forecast</h3>
-        <p>This component demonstrates fetching data from the server</p>
-
-        <div class="p-5 d-flex align-items-center">
-          <label class="me-2">Condition:</label>
+        <p class="mb-4">This component demonstrates fetching data from the server</p>
+      
+        <div class="d-flex align-items-center mb-4">
+          <div class="me-2">
+            <label>Condition:</label>
+          </div>
           <div class="flex-grow-1">
             <p-dropdown
               [options]="weatherConditions"
@@ -28,7 +30,7 @@
           </div>
         </div>
         
-        <p-table class="table table-striped" [value]="filteredData">
+        <p-table class="table table-striped" [value]="filteredData" style="margin-bottom: 1.5rem;">
           <ng-template pTemplate="header">
             <tr>
               <th *ngFor="let header of tableHeaders">{{ header }}</th>
