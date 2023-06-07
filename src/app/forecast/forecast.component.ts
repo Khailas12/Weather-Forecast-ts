@@ -20,12 +20,12 @@ export class ForecastComponent implements OnInit {
 
   constructor(private forecastService: ForecastService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.fetchWeatherConditions();
     this.fetchWeatherData();
   }
 
-  private fetchWeatherConditions(): void {
+  private fetchWeatherConditions() {
     this.forecastService.getConditions().subscribe({
       next: (data) => {
         this.weatherConditions = data?.weatherCondition?.map((condition: any) => condition.condition) || [];
@@ -36,7 +36,7 @@ export class ForecastComponent implements OnInit {
     });
   }
 
-  private fetchWeatherData(): void {
+  private fetchWeatherData() {
     this.forecastService.getConditionData().subscribe({
       next: (forecast) => {
         this.forecastData = forecast.data;
@@ -48,7 +48,7 @@ export class ForecastComponent implements OnInit {
     });
   }
 
-  filterData(): void {
+  filterData() {
     this.filteredData = this.selectedCondition && this.selectedCondition !== 'All'
       ? this.forecastData.filter(item => item.condition === this.selectedCondition)
       : this.forecastData;
