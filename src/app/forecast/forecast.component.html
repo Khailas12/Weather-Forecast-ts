@@ -22,11 +22,13 @@
           </div>
           <div class="flex-grow-1">
             <p-dropdown
-              [options]="weatherConditions"
-              [(ngModel)]="selectedCondition"
-              (onChange)="filterData()"
-              class="custom-dropdown"
-            ></p-dropdown>
+            [options]="weatherConditions"
+            [(ngModel)]="selectedCondition"
+            (onChange)="filterData()"
+            class="custom-dropdown"
+            [dropdownIcon]="'pi pi-angle-double-down'"
+          ></p-dropdown>
+          
           </div>
         </div>
         
